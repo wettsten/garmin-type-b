@@ -84,7 +84,7 @@ class TypeBView extends Ui.WatchFace {
 		var mod = Math.floor((today.min + 2) / 5);
 		
 		var five = today.min == 0 ? "{hour}" : _fives[mod];
-		var hour = _hours[(today.hour + (mod < 8 ? 0 : 1)) % 12];
+		var hour = _hours[today.hour + (mod < 8 ? 0 : 1)];
 		
 		var textArray = StringUtil.split(StringUtil.replace(five,"{hour}",hour),' ');
 		if (today.min % 10 == 0) {
