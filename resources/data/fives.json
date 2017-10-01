@@ -1,0 +1,15 @@
+[
+	"{hour}-ish",
+	"a little past {hour}",
+	"about ten past {hour}",
+	"quarter past {hour}",
+	"about twenty past {hour}",
+	"almost half past {hour}",
+	"half past {hour}",
+	"just over half past {hour}",
+	"about twenty to {hour}",
+	"quarter to {hour}",
+	"about ten to {hour}",
+	"almost {hour}",
+	"{hour}-ish"
+]

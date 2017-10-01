@@ -1,0 +1,8 @@
+<layout id="WatchFace">
+    <drawable class="Background" />
+    <label id="TimeLabel" x="center" y="center" font="Gfx.FONT_TINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_BLUE" /><label
+    	id="DateLabel" x="center" y="center" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_BLUE">
+</label>
+	<label id="TextLabel" x="center" y="center" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_BLUE"></label>
+	<drawable class="Battery"></drawable>
+</layout>

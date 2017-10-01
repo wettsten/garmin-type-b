@@ -1,0 +1,4 @@
+<resources>
+	<jsonData id="fives" filename="fives.json"/>
+	<jsonData id="hours" filename="hours.json"/>
+</resources>

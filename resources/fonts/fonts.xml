@@ -1,0 +1,7 @@
+<resources>
+    <font id="phil_bold_large" filename="philosopher-bold-large.fnt" antialias="true" />
+    <font id="expressway_bold" filename="expressway-bold.fnt" antialias="true" />
+    <font id="expressway_bold_125" filename="expressway-bold-125.fnt" antialias="true" />
+    <font id="expressway_bold_150" filename="expressway-bold-150.fnt" antialias="true" />
+    <font id="roboto_bold" filename="roboto-bold.fnt" antialias="true" />
+</resources>
