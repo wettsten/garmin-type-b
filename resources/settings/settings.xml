@@ -37,5 +37,13 @@
             <listEntry value="0xFF00FF">@Strings.ColorPink</listEntry>
         </settingConfig>
     </setting>
+    
+    <setting propertyKey="@Properties.TickerLength" title="@Strings.TickerLengthTitle">
+    	<settingConfig type="numeric" min="5" max="20" />
+    </setting>
+    
+    <setting propertyKey="@Properties.TickerWidth" title="@Strings.TickerWidthTitle">
+    	<settingConfig type="numeric" min="0" max="10" />
+    </setting>
 
 </settings>

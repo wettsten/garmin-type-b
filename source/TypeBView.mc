@@ -53,11 +53,12 @@ class TypeBView extends Ui.WatchFace {
 	
 	function setDate(dc,today) {
 		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		//var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
         var dateString = Lang.format("$1$ $2$", [today.day, months[today.month - 1]]);
         
         var dateView = View.findDrawableById("DateLabel");
         dateView.setColor(App.getApp().getProperty("ForegroundColor"));
-        dateView.setLocation(dc.getWidth() / 2, dc.getHeight() * 0.1);
+        dateView.setLocation(dc.getWidth() / 2, dc.getHeight() * 0.12);
         dateView.setText(dateString);
 	}
 	
@@ -84,7 +85,7 @@ class TypeBView extends Ui.WatchFace {
 		var mod = Math.floor((today.min + 2) / 5);
 		
 		var five = today.min == 0 ? "{hour}" : _fives[mod];
-		var hour = _hours[today.hour + (mod < 8 ? 0 : 1)];
+		var hour = _hours[(today.hour + (mod < 8 ? 0 : 1)) % 24];
 		
 		var textArray = StringUtil.split(StringUtil.replace(five,"{hour}",hour),' ');
 		if (today.min % 10 == 0) {
@@ -108,6 +109,7 @@ class TypeBView extends Ui.WatchFace {
         setDate(dc,today);
         setText(dc,today);
                 
+        System.println("Updating...");
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }

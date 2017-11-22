@@ -19,5 +19,8 @@
     <string id="ColorCyan">Cyan</string>
     <string id="ColorPurple">Purple</string>
     <string id="ColorPink">Pink</string>
+    
+    <string id="TickerLengthTitle">Ticker Length</string>
+    <string id="TickerWidthTitle">Ticker Width</string>
 
 </strings>

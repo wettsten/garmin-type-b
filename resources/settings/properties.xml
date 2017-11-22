@@ -2,5 +2,7 @@
 
     <property id="BackgroundColor" type="number">0xFF0000</property>
     <property id="ForegroundColor" type="number">0x000000</property>
+    <property id="TickerLength" type="number">18</property>
+    <property id="TickerWidth" type="number">5</property>
 
 </properties>
