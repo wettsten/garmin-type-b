@@ -26,10 +26,10 @@ class Background extends Ui.Drawable {
     }
         
     function drawPhoneConnected(dc) {
-		if (App.getApp().getProperty("ShowBluetoothDisconnected")) {
+		if (App.getApp().getProperty("ShowPhoneDisconnected")) {
 			if (System.getDeviceSettings().phoneConnected == false) {
 				
-				dc.setColor(App.getApp().getProperty("BluetoothDisconnectedColor"), Gfx.COLOR_TRANSPARENT);
+				dc.setColor(App.getApp().getProperty("PhoneDisconnectedColor"), Gfx.COLOR_TRANSPARENT);
 				dc.setPenWidth(5);		
 				
 		    	var width = dc.getWidth();
