@@ -10,6 +10,7 @@ class TypeBView extends Ui.WatchFace {
 	private var _font;
 	private var _fives;
 	private var _hours;
+	private var _phoneConnected;
 
     function initialize() {
         WatchFace.initialize();
@@ -25,6 +26,8 @@ class TypeBView extends Ui.WatchFace {
         var textView = View.findDrawableById("TextLabel");
         _font = Ui.loadResource( Rez.Fonts.expressway_bold_150 );
         textView.setFont(_font);
+        
+		_phoneConnected = System.getDeviceSettings().phoneConnected;
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -112,6 +115,18 @@ class TypeBView extends Ui.WatchFace {
         System.println("Updating...");
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+    }
+    
+    function onPartialUpdate(dc) {
+    	if (App.getApp().getProperty("ShowBluetoothDisconnected") == true) {
+		
+			var phoneConnected = System.getDeviceSettings().phoneConnected;
+			if (phoneConnected != _phoneConnected) {
+				System.println("Partial update...");
+        		View.onUpdate(dc);
+        		_phoneConnected = phoneConnected;
+			}
+		}
     }
 	
     // Called when this View is removed from the screen. Save the

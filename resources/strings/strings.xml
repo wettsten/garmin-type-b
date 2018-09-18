@@ -4,6 +4,7 @@
 
     <string id="BackgroundColorTitle">Background Color</string>
     <string id="ForegroundColorTitle">Foreground Color</string>
+    <string id="PhoneDisconnectedColorTitle">Phone Disconnected Color</string>
     
     <string id="ColorBlack">Black</string>
     <string id="ColorDarkGray">Dark Gray</string>
@@ -22,5 +23,6 @@
     
     <string id="TickerLengthTitle">Ticker Length</string>
     <string id="TickerWidthTitle">Ticker Width</string>
+    <string id="ShowPhoneDisconnectedTitle">Show Bluetooth Disconnected</string>
 
 </strings>

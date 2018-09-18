@@ -19,8 +19,27 @@ class Background extends Ui.Drawable {
         dc.setColor(Gfx.COLOR_TRANSPARENT, App.getApp().getProperty("BackgroundColor"));
         dc.clear();
         
+        drawPhoneConnected(dc);
+        
         drawBattery(dc);
         drawTicker(dc);
+    }
+        
+    function drawPhoneConnected(dc) {
+		if (App.getApp().getProperty("ShowBluetoothDisconnected")) {
+			if (System.getDeviceSettings().phoneConnected == false) {
+				
+				dc.setColor(App.getApp().getProperty("BluetoothDisconnectedColor"), Gfx.COLOR_TRANSPARENT);
+				dc.setPenWidth(5);		
+				
+		    	var width = dc.getWidth();
+		    	var radius = width / 2;
+				var x = radius * Math.cos(45);
+				var y = radius * Math.sin(45);
+	        	dc.drawLine(radius - x, radius + y, radius + x, radius - y);
+				dc.drawLine(radius + x, radius + y, radius - x, radius - y);
+			}
+		}
     }
 
     function drawBattery(dc) {        
