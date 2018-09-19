@@ -1,7 +1,6 @@
 using Toybox.WatchUi as Ui;
-using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
-using Toybox.System;
+using Toybox.System as Sys;
 using Toybox.Time.Gregorian;
 
 class Background extends Ui.Drawable {
@@ -16,7 +15,7 @@ class Background extends Ui.Drawable {
 
     function draw(dc) {        
         // Set the background color
-        dc.setColor(Gfx.COLOR_TRANSPARENT, App.getApp().getProperty("BackgroundColor"));
+        dc.setColor(Gfx.COLOR_TRANSPARENT, Settings.BackgroundColor);
         dc.clear();
         
         drawPhoneConnected(dc);
@@ -26,10 +25,10 @@ class Background extends Ui.Drawable {
     }
         
     function drawPhoneConnected(dc) {
-		if (App.getApp().getProperty("ShowPhoneDisconnected")) {
-			if (System.getDeviceSettings().phoneConnected == false) {
+		if (Settings.ShowPhoneDisconnected) {
+			if (Sys.getDeviceSettings().phoneConnected == false) {
 				
-				dc.setColor(App.getApp().getProperty("PhoneDisconnectedColor"), Gfx.COLOR_TRANSPARENT);
+				dc.setColor(Settings.PhoneDisconnectedColor, Gfx.COLOR_TRANSPARENT);
 				dc.setPenWidth(5);		
 				
 		    	var width = dc.getWidth();
@@ -43,8 +42,8 @@ class Background extends Ui.Drawable {
     }
 
     function drawBattery(dc) {        
-		var stats = System.getSystemStats();
-    	dc.setColor(App.getApp().getProperty("ForegroundColor"), Graphics.COLOR_TRANSPARENT);
+		var stats = Sys.getSystemStats();
+    	dc.setColor(Settings.ForegroundColor, Graphics.COLOR_TRANSPARENT);
     	var total = stats.battery * 360 / 100;
     	var end = total <= 90 ? 90 - total : 360 - total + 90;
     	
@@ -55,10 +54,10 @@ class Background extends Ui.Drawable {
     function drawTicker(dc) {
 		var today = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 		var mod = today.min % 5;
-    	dc.setColor(App.getApp().getProperty("ForegroundColor"), Graphics.COLOR_TRANSPARENT);
+    	dc.setColor(Settings.ForegroundColor, Gfx.COLOR_TRANSPARENT);
     	
-    	var length = App.getApp().getProperty("TickerLength");
-    	var width = App.getApp().getProperty("TickerWidth");
+    	var length = Settings.TickerLength;
+    	var width = Settings.TickerWidth;
     	var dia = dc.getWidth();
     	var height = dc.getHeight();
     	var radius = dia / 2;

@@ -17,7 +17,7 @@ class TypeBApp extends App.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        return [ new TypeBView() ];
+        return [ new View() ];
     }
 
     // New app settings have been received so trigger a UI update

@@ -1,16 +1,12 @@
 using Toybox.WatchUi as Ui;
-using Toybox.Graphics as Gfx;
 using Toybox.System as Sys;
-using Toybox.Lang as Lang;
 using Toybox.Application as App;
 using Toybox.Time.Gregorian;
 
-class TypeBView extends Ui.WatchFace {
+class View extends Ui.WatchFace {
+	private var _timeSetter = new TimeSetter();
+	private var _phoneConnected = Sys.getDeviceSettings().phoneConnected;
 	
-	private var _timeSetter;
-	private var _font;
-	private var _phoneConnected;
-
     function initialize() {
         WatchFace.initialize();
     }
@@ -20,11 +16,7 @@ class TypeBView extends Ui.WatchFace {
         setLayout(Rez.Layouts.WatchFace(dc));        
         
         var textView = View.findDrawableById("TextLabel");
-        _font = Ui.loadResource( Rez.Fonts.expressway_bold_150 );
-        textView.setFont(_font);
-        
-        _timeSetter = new TypeBTimeSetter();
-		_phoneConnected = System.getDeviceSettings().phoneConnected;
+        textView.setFont(Resources.Font);        
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -47,11 +39,11 @@ class TypeBView extends Ui.WatchFace {
     }
     
     function onPartialUpdate(dc) {
-    	if (App.getApp().getProperty("ShowPhoneDisconnected") == true) {
+    	if (Settings.ShowPhoneDisconnected) {
 		
-			var phoneConnected = System.getDeviceSettings().phoneConnected;
+			var phoneConnected = Sys.getDeviceSettings().phoneConnected;
 			if (phoneConnected != _phoneConnected) {
-				System.println("Partial update...");
+				Sys.println("Partial update...");
         		View.onUpdate(dc);
         		_phoneConnected = phoneConnected;
 			}
