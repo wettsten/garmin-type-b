@@ -23,6 +23,6 @@
     
     <string id="TickerLengthTitle">Ticker Length</string>
     <string id="TickerWidthTitle">Ticker Width</string>
-    <string id="ShowPhoneDisconnectedTitle">Show Bluetooth Disconnected</string>
+    <string id="ShowPhoneDisconnectedTitle">Show Phone Disconnected</string>
 
 </strings>
