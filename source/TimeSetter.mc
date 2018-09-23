@@ -19,8 +19,8 @@ class TimeSetter {
         }
         var timeString = Lang.format(timeFormat, [hours, today.min.format("%02d")]);
 
-        timeView.setColor(App.getApp().getProperty("ForegroundColor"));
-        timeView.setLocation(dc.getWidth() / 2, dc.getHeight() * 0.8);
+        timeView.setColor(Settings.ForegroundColor);
+        timeView.setLocation(dc.getWidth() / 2, dc.getHeight() * 0.77);
         timeView.setText(timeString);
 	}
 	
@@ -29,8 +29,8 @@ class TimeSetter {
 		//var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
         var dateString = Lang.format("$1$ $2$", [today.day, months[today.month - 1]]);
         
-        dateView.setColor(App.getApp().getProperty("ForegroundColor"));
-        dateView.setLocation(dc.getWidth() / 2, dc.getHeight() * 0.12);
+        dateView.setColor(Settings.ForegroundColor);
+        dateView.setLocation(dc.getWidth() / 2, dc.getHeight() * 0.13);
         dateView.setText(dateString);
 	}
 	
@@ -67,7 +67,7 @@ class TimeSetter {
         var textSize = dc.getTextDimensions(text,Resources.Font);
 		
 		textView.setLocation(dc.getWidth() / 2, dc.getHeight() / 2 - textSize[1] / 2);
-		textView.setColor(App.getApp().getProperty("ForegroundColor"));
+		textView.setColor(Settings.ForegroundColor);
         textView.setSize(dc.getWidth() * 0.8, dc.getHeight());
         textView.setText(text);
 	}

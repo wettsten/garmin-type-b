@@ -29,14 +29,15 @@ class Background extends Ui.Drawable {
 			if (Sys.getDeviceSettings().phoneConnected == false) {
 				
 				dc.setColor(Settings.PhoneDisconnectedColor, Gfx.COLOR_TRANSPARENT);
-				dc.setPenWidth(5);		
+				dc.setPenWidth(5);				
 				
-		    	var width = dc.getWidth();
-		    	var radius = width / 2;
-				var x = radius * Math.cos(45);
-				var y = radius * Math.sin(45);
-	        	dc.drawLine(radius - x, radius + y, radius + x, radius - y);
-				dc.drawLine(radius + x, radius + y, radius - x, radius - y);
+        		var x1 = dc.getWidth() * 0.15;
+        		var x2 = dc.getWidth() * 0.85;
+        		var y = dc.getHeight() * 0.28;
+        		dc.drawLine(x1, y, x2, y);
+        		
+        		y = dc.getHeight() * 0.72;
+        		dc.drawLine(x1, y, x2, y);
 			}
 		}
     }
