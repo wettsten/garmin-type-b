@@ -1,11 +1,10 @@
 using Toybox.WatchUi as Ui;
 using Toybox.System as Sys;
 using Toybox.Application as App;
-using Toybox.Time.Gregorian;
 
 class View extends Ui.WatchFace {
-	private var _timeSetter = new TimeSetter();
 	private var _phoneConnected = Sys.getDeviceSettings().phoneConnected;
+	private var _battery = Sys.getSystemStats().battery;
 	
     function initialize() {
         WatchFace.initialize();
@@ -13,10 +12,7 @@ class View extends Ui.WatchFace {
 
     // Load your resources here
     function onLayout(dc) {
-        setLayout(Rez.Layouts.WatchFace(dc));        
-        
-        var textView = View.findDrawableById("TextLabel");
-        textView.setFont(Resources.Font);        
+        setLayout(Rez.Layouts.WatchFace(dc));
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -27,27 +23,28 @@ class View extends Ui.WatchFace {
 	
     // Update the view
     function onUpdate(dc) {
-		var today = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-		
-        _timeSetter.setTime(dc,today,View.findDrawableById("TimeLabel"));
-        _timeSetter.setDate(dc,today,View.findDrawableById("DateLabel"));
-        _timeSetter.setText(dc,today,View.findDrawableById("TextLabel"));
-                
         System.println("Updating...");
-        // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
     
     function onPartialUpdate(dc) {
-    	if (Settings.ShowPhoneDisconnected) {
-		
+    	var update = false;
+    	if (Settings.ShowPhoneDisconnected) {		
 			var phoneConnected = Sys.getDeviceSettings().phoneConnected;
 			if (phoneConnected != _phoneConnected) {
-				Sys.println("Partial update...");
-        		View.onUpdate(dc);
         		_phoneConnected = phoneConnected;
+        		update = true;
 			}
 		}
+		var battery = Sys.getSystemStats().battery;
+		if (battery != _battery) {
+			_battery = battery;
+			update = true;
+		}
+		if (update) {
+			Sys.println("Partial update...");
+    		View.onUpdate(dc);
+    	}
     }
 	
     // Called when this View is removed from the screen. Save the

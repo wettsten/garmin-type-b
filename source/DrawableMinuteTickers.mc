@@ -3,56 +3,17 @@ using Toybox.Graphics as Gfx;
 using Toybox.System as Sys;
 using Toybox.Time.Gregorian;
 
-class Background extends Ui.Drawable {
+class DrawableMinuteTickers extends Ui.Drawable {
 
     function initialize() {
         var dictionary = {
-            :identifier => "Background"
+            :identifier => "DrawableMinuteTickers"
         };
 
         Drawable.initialize(dictionary);
     }
 
-    function draw(dc) {        
-        // Set the background color
-        dc.setColor(Gfx.COLOR_TRANSPARENT, Settings.BackgroundColor);
-        dc.clear();
-        
-        drawPhoneConnected(dc);
-        
-        drawBattery(dc);
-        drawTicker(dc);
-    }
-        
-    function drawPhoneConnected(dc) {
-		if (Settings.ShowPhoneDisconnected) {
-			if (Sys.getDeviceSettings().phoneConnected == false) {
-				
-				dc.setColor(Settings.PhoneDisconnectedColor, Gfx.COLOR_TRANSPARENT);
-				dc.setPenWidth(5);				
-				
-        		var x1 = dc.getWidth() * 0.15;
-        		var x2 = dc.getWidth() * 0.85;
-        		var y = dc.getHeight() * 0.28;
-        		dc.drawLine(x1, y, x2, y);
-        		
-        		y = dc.getHeight() * 0.72;
-        		dc.drawLine(x1, y, x2, y);
-			}
-		}
-    }
-
-    function drawBattery(dc) {        
-		var stats = Sys.getSystemStats();
-    	dc.setColor(Settings.ForegroundColor, Graphics.COLOR_TRANSPARENT);
-    	var total = stats.battery * 360 / 100;
-    	var end = total <= 90 ? 90 - total : 360 - total + 90;
-    	
-    	dc.setPenWidth(16);
-        dc.drawArc(dc.getWidth() / 2, dc.getHeight() / 2, dc.getWidth() / 2, Gfx.ARC_CLOCKWISE, 90, end);
-    }
-
-    function drawTicker(dc) {
+    function draw(dc) {
 		var today = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 		var mod = today.min % 5;
     	dc.setColor(Settings.ForegroundColor, Gfx.COLOR_TRANSPARENT);
