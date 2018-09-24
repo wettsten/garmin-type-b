@@ -12,7 +12,7 @@ class View extends Ui.WatchFace {
 
     // Load your resources here
     function onLayout(dc) {
-        setLayout(Rez.Layouts.WatchFace(dc));
+        setLayout(Rez.Layouts.Main(dc));
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -28,21 +28,20 @@ class View extends Ui.WatchFace {
     }
     
     function onPartialUpdate(dc) {
-    	var update = false;
-    	if (Settings.ShowPhoneDisconnected) {		
-			var phoneConnected = Sys.getDeviceSettings().phoneConnected;
-			if (phoneConnected != _phoneConnected) {
-        		_phoneConnected = phoneConnected;
-        		update = true;
-			}
+    	var update = false;	
+		var phoneConnected = Sys.getDeviceSettings().phoneConnected;
+		if (phoneConnected != _phoneConnected && Settings.ShowPhoneDisconnected) {
+    		_phoneConnected = phoneConnected;
+			Sys.println("Partial update due to phone connected change...");
+    		update = true;
 		}
 		var battery = Sys.getSystemStats().battery;
 		if (battery != _battery) {
 			_battery = battery;
+			Sys.println("Partial update due to battery change...");
 			update = true;
 		}
 		if (update) {
-			Sys.println("Partial update...");
     		View.onUpdate(dc);
     	}
     }

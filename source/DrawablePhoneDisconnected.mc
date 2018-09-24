@@ -25,7 +25,7 @@ class DrawablePhoneDisconnected extends Ui.Drawable {
         		var y = dc.getHeight() * 0.28;
         		dc.drawLine(x1, y, x2, y);
         		
-        		y = dc.getHeight() * 0.72;
+        		y = dc.getHeight() - y;
         		dc.drawLine(x1, y, x2, y);
 			}
 		}

@@ -28,7 +28,7 @@ class LabelText extends Ui.Text {
         var textSize = dc.getTextDimensions(text,Resources.Font);
 		
         dc.setColor(Settings.ForegroundColor, Gfx.COLOR_TRANSPARENT);
-        dc.drawText(dc.getWidth() / 2, dc.getHeight() / 2 - textSize[1] / 2, Resources.Font, text, Gfx.TEXT_JUSTIFY_CENTER);
+        dc.drawText(dc.getWidth() / 2, dc.getHeight() / 2 - textSize[1] / 2 - dc.getHeight() * 0.02, Resources.Font, text, Gfx.TEXT_JUSTIFY_CENTER);
     }
 	
 	function getText(dc,array) {

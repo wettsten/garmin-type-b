@@ -1,4 +1,4 @@
-<layout id="WatchFace">
+<layout id="Main">
     <drawable class="DrawableBackground" />
     <drawable class="DrawableBattery" />
     <drawable class="DrawableMinuteTickers" />
